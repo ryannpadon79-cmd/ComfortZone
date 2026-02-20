@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Hug For You</title>
+    <style>
+        body {
+            background-color: #f3e5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+            transition: all 0.4s ease;
+        }
+        h1 { color: #8e24aa; margin-bottom: 10px; font-size: 1.8rem; }
+        p { line-height: 1.6; font-size: 1.1em; color: #4a4a4a; }
+        
+        .heart {
+            color: #ff80ab;
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: beat 1s infinite;
+        }
+
+        /* GIF Styling */
+        #gif-wrapper {
+            display: none; 
+            margin: 20px auto;
+            width: 100%;
+            opacity: 0;
+        }
+        #gif-wrapper img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+        }
+
+        button {
+            background-color: #ba68c8;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #9c27b0; }
+        
+        #extra-msg { 
+            margin-top: 20px; 
+            font-weight: bold; 
+            color: #8e24aa; 
+            display: none; 
+            font-size: 1.1em;
+            line-height: 1.4;
+            opacity: 0;
+        }
+
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="card" id="mainCard">
+    <div id="heart-icon" class="heart">♥</div>
+    <h1 id="h1-title">Hey, you.</h1>
+    <p id="p-text">I heard today was a bit rough. I just wanted to remind you that you're doing great.</p>
+    
+    <div id="gif-wrapper">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2I0eXpueXpueXpueXpueXpueXpueXpueXpueXpueXpueXpueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vz58J8shFW6BvqnYTm/giphy.gif" alt="Comforting Cartoon Hug">
+    </div>
+
+    <button id="hugBtn" onclick="showHug()">Click for a virtual hug</button>
+    <div id="extra-msg">✨Don’t be sad, mae. I know you’re having a bad day, and I hope what I sent you can somehow ease your stress and make you smile.✨</div>
+</div>
+
+<script>
+    function showHug() {
+        // Hide initial elements
+        document.getElementById('hugBtn').style.display = 'none';
+        document.getElementById('heart-icon').style.display = 'none';
+        document.getElementById('h1-title').style.display = 'none';
+        document.getElementById('p-text').style.display = 'none';
+
+        // Show the GIF and the special message
+        const gifWrapper = document.getElementById('gif-wrapper');
+        const extraMsg = document.getElementById('extra-msg');
+        
+        gifWrapper.style.display = 'block';
+        extraMsg.style.display = 'block';
+
+        // Trigger smooth fade-in
+        setTimeout(() => {
+            gifWrapper.style.opacity = '1';
+            gifWrapper.style.animation = 'fadeIn 1s forwards';
+            extraMsg.style.opacity = '1';
+            extraMsg.style.animation = 'fadeIn 1s forwards';
+        }, 10);
+    }
+</script>
+
+</body>
+</html>
